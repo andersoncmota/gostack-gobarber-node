@@ -54,7 +54,7 @@ class AppointmentController {
       where: { id: provider_id, provider: true },
     });
 
-    if (!isProvider) {
+    if (!isProvider || provider_id === req.userId) {
       return res
         .status(401)
         .json({ error: 'You can only create appointment with providers' });
